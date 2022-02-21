@@ -12,7 +12,6 @@ C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\bin\Debug\net6.0\Newtonsoft.J
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.csproj.AssemblyReference.cache
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.AssemblyInfoInputs.cache
 C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.AssemblyInfo.cs
@@ -56,3 +55,4 @@ C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.dll
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\ref\EX.dll
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.pdb
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.genruntimeconfig.cache
+C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.csproj.AssemblyReference.cache

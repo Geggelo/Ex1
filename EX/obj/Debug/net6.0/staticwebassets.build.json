@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "trP6qBq+i6nUZYkvsBKRWxqYnp1pcHehydU+w0vGhic=",
+  "Hash": "KPL9N2dbw7Q4OeRcXaMsORHtqSv3dDUZq1UbeJXUQAg=",
   "Source": "EX",
   "BasePath": "_content/EX",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "EX\\wwwroot",
       "Source": "EX",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\Contents\\index.html",
+      "Identity": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\Contents\\index.html",
       "SourceId": "EX",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "RelativePath": "Contents/index.html",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Contents\\index.html"
     },
     {
-      "Identity": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\Contents\\StyleSheet.css",
+      "Identity": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\Contents\\StyleSheet.css",
       "SourceId": "EX",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "RelativePath": "Contents/StyleSheet.css",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\Contents\\StyleSheet.css"
     },
     {
-      "Identity": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\package.json",
+      "Identity": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\package.json",
       "SourceId": "EX",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "RelativePath": "package.json",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\package.json"
     },
     {
-      "Identity": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\package-lock.json",
+      "Identity": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\package-lock.json",
       "SourceId": "EX",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "RelativePath": "package-lock.json",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\package-lock.json"
     },
     {
-      "Identity": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\Scripts\\Site.js",
+      "Identity": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\Scripts\\Site.js",
       "SourceId": "EX",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\projects\\git\\git-test\\Ex1\\EX\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\wwwroot\\",
       "BasePath": "_content/EX",
       "RelativePath": "Scripts/Site.js",
       "AssetKind": "All",
