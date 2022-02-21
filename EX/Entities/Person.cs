@@ -14,5 +14,13 @@
             this.age = age;
             this.address = address;
         }
+
+        public void Updater(string firstName, string lastName, int age, string address)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.address = address;
+        }
     }
 }

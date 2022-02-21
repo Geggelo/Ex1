@@ -16,6 +16,14 @@
             this.postalCode = postalCode;
             this.people = new List<Person>();
         }
+
+        public void Updater(string name, string province, string country, int postalCode)
+        {
+            this.name = name;
+            this.province = province;
+            this.country = country;
+            this.postalCode = postalCode;
+        }
     }
 
     
