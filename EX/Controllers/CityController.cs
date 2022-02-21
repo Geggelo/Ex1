@@ -60,7 +60,13 @@ namespace EX.Controllers
         [HttpDelete]
         public IActionResult DeleteCity(string name)
         {
-            return Ok();
+            List<City> cities = _utilities.Deserializer();
+            var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
+            if (target == null)
+                return BadRequest("This city already exists");
+            cities.Remove(target);
+            _utilities.Serializer(cities);
+            return Ok(cities);
         }
 
         [HttpPut]
