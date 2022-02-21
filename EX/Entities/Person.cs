@@ -12,6 +12,5 @@
     {
         public string street { get; set; }
         public int number { get; set; }
-        public string City { get; set; }
     }
 }

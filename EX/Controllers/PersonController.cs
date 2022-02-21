@@ -4,8 +4,8 @@ using EX.Entities;
 
 namespace EX.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class PersonController : ControllerBase
     {
     }
