@@ -6,5 +6,6 @@
         public string province { get; set; }
         public string country { get; set; }
         public int postalCode { get; set; }
+        public List<Person> people { get; set; }
     }
 }
