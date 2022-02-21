@@ -1,5 +1,5 @@
 ﻿
-GetCities() {
+function GetCities() {
     $.ajax({
         url: "Api/City",
         method: "GET"
@@ -18,7 +18,7 @@ GetCities() {
     })
 
 
-    GetPeople() {
+ function   GetPeople() {
         $.ajax({
             url: "Api/Person",
             method: "GET"
