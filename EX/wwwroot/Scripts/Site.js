@@ -1,7 +1,6 @@
-﻿
-function GetCities() {
+﻿function GetCities() {
     $.ajax({
-        url: "Api/City",
+        url: "https://localhost:7137/City",
         method: "GET"
     }).done(function (result) {
         if (result)
@@ -14,13 +13,37 @@ function GetCities() {
     }).fail(function () {
         alert("ERRORE!");
     }).always(function () {
-        $("#esito").html("Tasto schiacciato");
+        $("#esito").html("Fatto!");
+    })
+}
+
+function GetCity() {
+    $.ajax({
+        url: "https://localhost:7137/City",
+        method: "GET"
+    }).done(function (result) {
+        var s = document.getElementById("cityname").value;
+        result.forEach(x => {
+            if (x.name == s)
+            {
+                $("#CityTable").html(`<tr>
+                <td>${x.name} </td>
+                <td>${x.province}</td>
+                <td>${x.country}</td>
+                <td>${x.postalCode}</td>
+              </tr>`);
+            }
+        })  
+    }).fail(function () {
+        alert("ERRORE!");
+    }).always(function () {
+        $("#esito").html("Fatto!");
     })
 }
 
     function GetPeople() {
         $.ajax({
-            url: "Api/Person",
+            url: "https://localhost:7137/Person",
             method: "GET"
         }).done(function (result) {
             if (result)

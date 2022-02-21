@@ -24,17 +24,17 @@ namespace EX.Controllers
             return Ok(_utilities.Deserializer());
         }
 
-        //[HttpGet]
-        //[Route("{name}")]
-        //public IActionResult GetSingleData(string name)
-        //{
-        //    _logger.LogInformation($"Requested {name} information");
-        //    List<City> cities = _utilities.Deserializer();
-        //    var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
-        //    if (target == null)
-        //        return NotFound($"Could not find {name}");
-        //    return Ok(target);
-        //}
+        [HttpGet]
+        [Route("{name}")]
+        public IActionResult GetSingleData(string name)
+        {
+            _logger.LogInformation($"Requested {name} information");
+            List<City> cities = _utilities.Deserializer();
+            var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
+            if (target == null)
+                return NotFound($"Could not find {name}");
+            return Ok(target);
+        }
 
         [HttpPost]
         public IActionResult AddCity(string name, string province, string country, int postalCode)
