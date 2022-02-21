@@ -208,19 +208,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AngeloGabbatore\\.nuget\\packages\\": {}
+    "C:\\Users\\MassimilianoBedana\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\EX.csproj",
+      "projectUniqueName": "C:\\projects\\git\\git-test\\Ex1\\EX\\EX.csproj",
       "projectName": "EX",
-      "projectPath": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\EX.csproj",
-      "packagesPath": "C:\\Users\\AngeloGabbatore\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AngeloGabbatore\\source\\repos\\Sironi\\EX\\EX\\obj\\",
+      "projectPath": "C:\\projects\\git\\git-test\\Ex1\\EX\\EX.csproj",
+      "packagesPath": "C:\\Users\\MassimilianoBedana\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\git\\git-test\\Ex1\\EX\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\AngeloGabbatore\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MassimilianoBedana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -269,7 +274,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
