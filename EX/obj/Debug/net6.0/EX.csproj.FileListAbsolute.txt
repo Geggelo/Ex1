@@ -55,4 +55,3 @@ C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.dll
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\ref\EX.dll
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.pdb
 C:\projects\git\git-test\Ex1\EX\obj\Debug\net6.0\EX.genruntimeconfig.cache
-C:\Users\AngeloGabbatore\source\repos\Sironi\EX\EX\obj\Debug\net6.0\EX.csproj.AssemblyReference.cache
