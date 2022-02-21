@@ -18,7 +18,7 @@ GetCities() {
     })
 
 
-    GetPeople() {
+GetPeople() {
         $.ajax({
             url: "Api/Person",
             method: "GET"
@@ -37,3 +37,6 @@ GetCities() {
         }).always(function () {
             $("#esito").html("Tasto schiacciato");
         })
+
+
+        
