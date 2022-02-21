@@ -28,14 +28,14 @@ namespace EX.Entities
             return JsonSerializer.Deserialize<List<City>>(database);
         }
 
-        public void Serializer(City city)
+        public void Serializer(List<City> cities)
         {
             _logger.LogInformation($"Trying to write file {database}");
             try
             {
                 using (StreamWriter _writer = new StreamWriter(database, false))
                 {
-                    _writer.Write(JsonSerializer.Serialize(city));
+                    _writer.Write(JsonSerializer.Serialize(cities));
                 }
             }
             catch (Exception ex)
