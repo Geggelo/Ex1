@@ -1,16 +1,15 @@
 ﻿
-TestApi() {
+GetCities() {
     $.ajax({
-        url: "Api/Course",
+        url: "Api/City",
         method: "GET"
     }).done(function (result) {
         if (result)
-            $("#contenuto").html(result.map(item => `<tr>
-                <td>${item.id} </td>
-                <td>${item.title}</td>
-                <td>${item.duration}</td>
-                <td>${new Date(item.startDate).toLocaleDateString()}</td>
-                <td>${new Date(item.endDate).toLocaleDateString()}</td>
+            $("#CityTable").html(result.map(item => `<tr>
+                <td>${item.name} </td>
+                <td>${item.province}</td>
+                <td>${item.country}</td>
+                <td>${item.postalcode}</td>
               </tr>`));
     }).fail(function () {
         alert("ERRORE!");
