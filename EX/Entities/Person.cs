@@ -2,15 +2,17 @@
 {
     public class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         public int age { get; set; }
-        public Address address { get; set; }
-    }
+        public string address { get; set; }
 
-    public class Address
-    {
-        public string street { get; set; }
-        public int number { get; set; }
+        public Person(string firstName, string lastName, int age, string address)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.address = address;
+        }
     }
 }

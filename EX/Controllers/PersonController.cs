@@ -11,7 +11,7 @@ namespace EX.Controllers
         private readonly ILogger<PersonController> _logger;
         private readonly Utilities _utilities;
 
-        private PersonController(ILogger<PersonController> logger, Utilities utilities)
+        public PersonController(ILogger<PersonController> logger, Utilities utilities)
         {
             _logger = logger;
             _utilities = utilities;
@@ -20,6 +20,7 @@ namespace EX.Controllers
         [HttpGet]
         public IActionResult GetPeople()
         {
+            _logger.LogInformation("Requested all people information");
             try
             {
                 return Ok(_utilities.Deserializer().SelectMany(x => x.people).ToList());
@@ -37,7 +38,7 @@ namespace EX.Controllers
         {
             try
             {
-                return Ok(_utilities.Deserializer().SelectMany(x => x.people).FirstOrDefault(p => p.FirstName.ToUpper() == name.ToUpper()));
+                return Ok(_utilities.Deserializer().SelectMany(x => x.people).FirstOrDefault(p => p.firstName.ToUpper() == name.ToUpper()));
             }
             catch (Exception ex)
             {
@@ -47,9 +48,28 @@ namespace EX.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPerson(string name)
+        public IActionResult AddPerson(string firstName, string lastName, int age, string address, string cityName)
         {
-            return Ok();
+            try
+            {
+                List<City> cities = _utilities.Deserializer();
+                var target = cities.FirstOrDefault(x => x.name == cityName);
+                if (target == null)
+                    return BadRequest("Città non esistente");
+                var check = cities.SelectMany(x => x.people).FirstOrDefault(p => p.firstName.ToUpper() == firstName.ToUpper());
+                if (check != null)
+                    return BadRequest("Perosna già esistente");
+
+                Person p = new Person(firstName, lastName, age, address);
+                target.people.Add(p);
+                _utilities.Serializer(cities);
+                return Ok(target);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete]

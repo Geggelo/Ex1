@@ -18,22 +18,17 @@
 }
 
 function GetCity() {
+    var s = document.getElementById("cityname").value;
     $.ajax({
-        url: "https://localhost:7137/City",
+        url: "https://localhost:7137/City/" + s,
         method: "GET"
     }).done(function (result) {
-        var s = document.getElementById("cityname").value;
-        result.forEach(x => {
-            if (x.name == s)
-            {
-                $("#CityTable").html(`<tr>
-                <td>${x.name} </td>
-                <td>${x.province}</td>
-                <td>${x.country}</td>
-                <td>${x.postalCode}</td>
-              </tr>`);
-            }
-        })  
+        $("#CityTable").html(`<tr>
+        <td>${result.name} </td>
+        <td>${result.province}</td>
+        <td>${result.country}</td>
+        <td>${result.postalCode}</td>
+        </tr>`); 
     }).fail(function () {
         alert("ERRORE!");
     }).always(function () {
@@ -41,23 +36,24 @@ function GetCity() {
     })
 }
 
-    function GetPeople() {
-        $.ajax({
-            url: "https://localhost:7137/Person",
-            method: "GET"
-        }).done(function (result) {
-            if (result)
-                $("#PersonTable").html(result.map(item => `<tr>
-                <td>${item.FirstName} </td>
-                <td>${item.LastName}</td>
-                <td>${item.age}</td>
-                <td>${item.address.street}</td>
-                <td>${item.address.number}</td>
+//-------------------------------------------------------------------------------------------------------------------
+function GetPeople() {
+    $.ajax({
+        url: "https://localhost:7137/Person",
+        method: "GET"
+    }).done(function (result) {
+        if (result)
+            $("#PersonTable").html(result.map(item => `<tr>
+            <td>${item.FirstName} </td>
+            <td>${item.LastName}</td>
+            <td>${item.age}</td>
+            <td>${item.address.street}</td>
+            <td>${item.address.number}</td>
 
-              </tr>`));
-        }).fail(function () {
-            alert("ERRORE!");
-        }).always(function () {
-            $("#esito").html("Tasto schiacciato");
-        })
-    }
+            </tr>`));
+    }).fail(function () {
+        alert("ERRORE!");
+    }).always(function () {
+        $("#esito").html("Tasto schiacciato");
+    })
+}
