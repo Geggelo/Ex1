@@ -6,7 +6,7 @@ namespace EX.Entities
 {
     public class Utilities
     {
-        string database = Environment.CurrentDirectory + "\\database.json";
+        string database = @$"{Environment.CurrentDirectory}\database.json";
         private readonly ILogger<Utilities> _logger;
 
         public Utilities(ILogger<Utilities> logger)
@@ -18,14 +18,15 @@ namespace EX.Entities
 
         public List<City> Deserializer()
         {
+            _logger.LogInformation($"Trying to read file {database}");
+            string data;
             using (StreamReader _reader = new StreamReader(database))
             {
-                _logger.LogInformation($"Trying to read file {database}");
-                string data = _reader.ReadToEnd();
+                data = _reader.ReadToEnd();
                 if (String.IsNullOrEmpty(data))
                     return new List<City>();
             }
-            return JsonSerializer.Deserialize<List<City>>(database);
+            return JsonSerializer.Deserialize<List<City>>(data);
         }
 
         public void Serializer(List<City> cities)
@@ -33,7 +34,7 @@ namespace EX.Entities
             _logger.LogInformation($"Trying to write file {database}");
             try
             {
-                using (StreamWriter _writer = new StreamWriter(database, false))
+                using (StreamWriter _writer = new StreamWriter(database, append: false))
                 {
                     _writer.Write(JsonSerializer.Serialize(cities));
                 }

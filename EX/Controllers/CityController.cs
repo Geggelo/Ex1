@@ -24,17 +24,17 @@ namespace EX.Controllers
             return Ok(_utilities.Deserializer());
         }
 
-        [HttpGet]
-        [Route("{name}")]
-        public IActionResult GetSingleData(string name)
-        {
-            _logger.LogInformation($"Requested {name} information");
-            List<City> cities = _utilities.Deserializer();
-            var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
-            if (target == null)
-                return NotFound($"Could not find {name}");
-            return Ok(target);
-        }
+        //[HttpGet]
+        //[Route("{name}")]
+        //public IActionResult GetSingleData(string name)
+        //{
+        //    _logger.LogInformation($"Requested {name} information");
+        //    List<City> cities = _utilities.Deserializer();
+        //    var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
+        //    if (target == null)
+        //        return NotFound($"Could not find {name}");
+        //    return Ok(target);
+        //}
 
         [HttpPost]
         public IActionResult AddCity(string name, string province, string country, int postalCode)
@@ -45,7 +45,7 @@ namespace EX.Controllers
                 List<City> cities = _utilities.Deserializer();
                 if (cities.Any(c => c.name.ToUpper() == name.ToUpper()))
                     return BadRequest("This city already exists");
-                cities.Add(new City { name = name, province = province, country = country, postalCode = postalCode });
+                cities.Add(new City(name, province, country, postalCode));
                 _logger.LogInformation($"{name} entry created");
                 _utilities.Serializer(cities);
                 return Ok(cities);
