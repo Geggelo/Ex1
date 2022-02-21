@@ -28,6 +28,7 @@ namespace EX.Controllers
         [Route("{name}")]
         public IActionResult GetSingleData(string name)
         {
+            _logger.LogInformation($"Requested {name} information");
             List<City> cities = _utilities.Deserializer();
             var target = cities.FirstOrDefault(c => c.name.ToUpper() == name.ToUpper());
             if (target == null)
@@ -35,13 +36,43 @@ namespace EX.Controllers
             return Ok(target);
         }
 
-        //[HttpPost]
-        //public IActionResult AddCity(string name, string province, string country, int postalCode)
-        //{
-        //    try
-        //    {
+        [HttpPost]
+        public IActionResult AddCity(string name, string province, string country, int postalCode)
+        {
+            _logger.LogInformation("Requested creation of a new city entry");
+            try
+            {
+                List<City> cities = _utilities.Deserializer();
+                if (cities.Any(c => c.name.ToUpper() == name.ToUpper()))
+                    return BadRequest("This city already exists");
+                cities.Add(new City { name = name, province = province, country = country, postalCode = postalCode });
+                _logger.LogInformation($"{name} entry created");
+                _utilities.Serializer(cities);
+                return Ok(cities);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                return StatusCode(500, ex.Message);
+            }
+        }
 
-        //    }
-        //}
+        [HttpDelete]
+        public IActionResult DeleteCity(string name)
+        {
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult UpdateCity(string name)
+        {
+            return Ok();
+        }
+
+        [HttpPatch]
+        public IActionResult PatchCity(string name)
+        {
+            return Ok();
+        }
     }
 }
