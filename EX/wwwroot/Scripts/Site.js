@@ -16,9 +16,9 @@ function GetCities() {
     }).always(function () {
         $("#esito").html("Tasto schiacciato");
     })
+}
 
-
- function   GetPeople() {
+    function GetPeople() {
         $.ajax({
             url: "Api/Person",
             method: "GET"
@@ -37,3 +37,4 @@ function GetCities() {
         }).always(function () {
             $("#esito").html("Tasto schiacciato");
         })
+    }
