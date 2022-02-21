@@ -8,5 +8,6 @@ namespace EX.Controllers
     [ApiController]
     public class CityController : ControllerBase
     {
+        
     }
 }
