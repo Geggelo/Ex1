@@ -8,7 +8,7 @@
                 <td>${item.name} </td>
                 <td>${item.province}</td>
                 <td>${item.country}</td>
-                <td>${item.postalcode}</td>
+                <td>${item.postalCode}</td>
               </tr>`));
     }).fail(function () {
         alert("ERRORE!");
@@ -44,16 +44,33 @@ function GetPeople() {
     }).done(function (result) {
         if (result)
             $("#PersonTable").html(result.map(item => `<tr>
-            <td>${item.FirstName} </td>
-            <td>${item.LastName}</td>
+            <td>${item.firstName} </td>
+            <td>${item.lastName}</td>
             <td>${item.age}</td>
-            <td>${item.address.street}</td>
-            <td>${item.address.number}</td>
-
+            <td>${item.address}</td>
             </tr>`));
     }).fail(function () {
         alert("ERRORE!");
     }).always(function () {
         $("#esito").html("Tasto schiacciato");
+    })
+}
+
+function GetPerson() {
+    var s = document.getElementById("personName").value;
+    $.ajax({
+        url: "https://localhost:7137/Person/" + s,
+        method: "GET"
+    }).done(function (result) {
+        $("#CityTable").html(`<tr>
+        <td>${result.firstName} </td>
+        <td>${result.lastName}</td>
+        <td>${result.age}</td>
+        <td>${result.address}</td>
+        </tr>`);
+    }).fail(function () {
+        alert("ERRORE!");
+    }).always(function () {
+        $("#esito").html("Fatto!");
     })
 }
