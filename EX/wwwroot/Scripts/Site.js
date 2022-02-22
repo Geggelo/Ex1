@@ -74,3 +74,31 @@ function GetPerson() {
         $("#esito").html("Fatto!");
     })
 }
+
+//function CreatePerson() {
+//    var firstName = $("#firstname").value;
+//    var lastName = $("#lastname").value;
+//    var age = $("#age").value;
+//    var address = $("#address").value;
+//    var cityName = $("#city").value;
+//    $.ajax({
+//        url: "https://localhost:7137/" + "Person?firstName=" + firstName + "&lastName=" + lastName + "&age=" + age + "&address=" + address "&cityName=" + cityName,
+//        method: "POST"
+//    }).done(function () {
+//        alert("dsafas");
+//    });
+//}
+
+//function CreatePerson() {
+//    var fn = document.getElementById("firstname").value;
+//    var ln = document.getElementById("lastname").value;
+//    var a = document.getElementById("age").value;
+//    var ass = document.getElementById("address").value;
+//    var c = document.getElementById("city").value;
+//    $.post("https://localhost:7137/Person",
+//        { firstName: "${fn}", lastName: "${ln}", age: "${a}", address: "${ass}", cityName: "${c}" }).done(function (response) {
+//        alert("success");
+//    });
+//}
+
+
