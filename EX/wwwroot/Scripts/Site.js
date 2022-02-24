@@ -92,7 +92,6 @@ function DeletePerson(id) {
         method: "DELETE"
     }).done(function (result) {
         if (result) {
-            alert("Delition complete");
             GetCityPeople(result.id);
         };
     }).fail(function () {
@@ -104,7 +103,8 @@ function DeletePerson(id) {
 function Return() {
     GetCities();
 }
-//-------------------------------------------------------------------------------------------------------------------
+//restituisce tutte le persone
+//bottone con cestino elimina la persona
 function GetPeople() {
     $.ajax({
         url: "https://localhost:7137/Person",
@@ -130,23 +130,24 @@ function GetPeople() {
     })
 }
 
-function GetPerson() {
-    var s = document.getElementById("personName").value;
-    $.ajax({
-        url: "https://localhost:7137/Person/" + s,
-        method: "GET"
-    }).done(function (result) {
-        $("#CityTable").html(`<tr>
-        <td>${result.firstName} </td>
-        <td>${result.lastName}</td>
-        <td>${result.age}</td>
-        <td>${result.address}</td>
-        </tr>`);
-    }).fail(function () {
-        alert("ERRORE!");
-    }).always(function () {
-        $("#esito").html("Fatto!");
-    })
-}
+//non utilizzata
+//function GetPerson() {
+//    var s = document.getElementById("personName").value;
+//    $.ajax({
+//        url: "https://localhost:7137/Person/" + s,
+//        method: "GET"
+//    }).done(function (result) {
+//        $("#CityTable").html(`<tr>
+//        <td>${result.firstName} </td>
+//        <td>${result.lastName}</td>
+//        <td>${result.age}</td>
+//        <td>${result.address}</td>
+//        </tr>`);
+//    }).fail(function () {
+//        alert("ERRORE!");
+//    }).always(function () {
+//        $("#esito").html("Fatto!");
+//    })
+//}
 
 
