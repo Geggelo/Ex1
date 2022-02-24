@@ -18,19 +18,18 @@ namespace EX.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPerson(string firstName, string lastName, int age, string address, string cityName)
+        public IActionResult AddPerson(string firstName, string lastName, int age, string address, Guid cityID)
         {
             _logger.LogInformation("Requested creation of a new person entry");
             try
             {
                 List<City> cities = _utilities.Deserializer();
-                var target = cities.FirstOrDefault(x => x.name == cityName);
+                var target = cities.FirstOrDefault(x => x.id == cityID);
                 if (target == null)
-                    return BadRequest($"{cityName} deos not exist");
-                var check = target.people.FirstOrDefault(p => p.firstName.ToUpper() == firstName.ToUpper());
-                if (check != null)
-                    return BadRequest($"{firstName} already exists in {cityName}");
-                target.people.Add(new Person(firstName, lastName, age, address));
+                    return BadRequest($"{cityID} deos not exist");
+                Person newest = new Person(firstName, lastName, age, address, cityID);
+                newest.id = Guid.NewGuid();
+                target.people.Add(newest);
                 _logger.LogInformation($"{firstName} {lastName} successfully created");
                 _utilities.Serializer(cities);
                 return Ok(target);
@@ -58,13 +57,13 @@ namespace EX.Controllers
         }
 
         [HttpGet]
-        [Route("{firstName}")]
-        public IActionResult GetPerson(string firstName)
+        [Route("{id}")]
+        public IActionResult GetPerson(Guid id)
         {
-            _logger.LogInformation($"Requested {firstName} information");
+            _logger.LogInformation($"Requested {id} information");
             try
             {
-                return Ok(_utilities.Deserializer().SelectMany(x => x.people).FirstOrDefault(p => p.firstName.ToUpper() == firstName.ToUpper()));
+                return Ok(_utilities.Deserializer().SelectMany(x => x.people).FirstOrDefault(p => p.id == id));
             }
             catch (Exception ex)
             {
@@ -72,20 +71,23 @@ namespace EX.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        //non riesce a restituire la città
         [HttpDelete]
-        public IActionResult DeletePerson(string firstName)
+        [Route("{id}")]
+        public IActionResult DeletePerson(Guid id)
         {
-            _logger.LogInformation($"Requested removal of {firstName}");
+            _logger.LogInformation($"Requested removal of person with id: {id}");
             try
             {
                 List<City> cities = _utilities.Deserializer();
-                var target = cities.SelectMany(x => x.people).FirstOrDefault(p => p.firstName.ToUpper() == firstName.ToUpper());
+                var target = cities.SelectMany(x => x.people).FirstOrDefault(p => p.id == id);
                 if (target == null)
-                    return BadRequest($"{firstName} does not exist");
+                    return BadRequest($"{id} does not exist");
+                var env = cities.FirstOrDefault(c => c.id == target.id);
                 cities.ForEach(c => c.people.Remove(target));
-                _logger.LogInformation($"{firstName} successfully removed");
-                return Ok(cities);
+                _logger.LogInformation($"{target.firstName} {target.lastName} successfully removed");
+                _utilities.Serializer(cities);
+                return Ok(env);
             }
             catch (Exception ex)
             {
@@ -95,7 +97,7 @@ namespace EX.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdatePerson(string firstName, string lastName, int age, string address)
+        public IActionResult UpdatePerson(Guid id, string firstName, string lastName, int age, string address)
         {
             _logger.LogInformation($"Requested information update of {firstName}");
             try
@@ -116,15 +118,15 @@ namespace EX.Controllers
         }
 
         [HttpPatch]
-        public IActionResult PatchPerson(string firstName, string address)
+        public IActionResult PatchPerson(Guid id, string address)
         {
-            _logger.LogInformation($"Requested address update of {firstName}");
+            _logger.LogInformation($"Requested address update of person with id: {id}");
             try
             {
                 List<City> cities = _utilities.Deserializer();
-                var target = cities.SelectMany(x => x.people).FirstOrDefault(p => p.firstName.ToUpper() == firstName.ToUpper());
+                var target = cities.SelectMany(x => x.people).FirstOrDefault(p => p.id == id);
                 if (target == null)
-                    return BadRequest($"{firstName} does not exist");
+                    return BadRequest($"{id} does not exist");
                 target.address = address;
                 _utilities.Serializer(cities);
                 return Ok(target);
