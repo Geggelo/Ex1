@@ -71,7 +71,7 @@ namespace EX.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        //non riesce a restituire la città
+
         [HttpDelete]
         [Route("{id}")]
         public IActionResult DeletePerson(Guid id)
@@ -83,7 +83,7 @@ namespace EX.Controllers
                 var target = cities.SelectMany(x => x.people).FirstOrDefault(p => p.id == id);
                 if (target == null)
                     return BadRequest($"{id} does not exist");
-                var env = cities.FirstOrDefault(c => c.id == target.id);
+                var env = cities.FirstOrDefault(c => c.id == target.cityId);
                 cities.ForEach(c => c.people.Remove(target));
                 _logger.LogInformation($"{target.firstName} {target.lastName} successfully removed");
                 _utilities.Serializer(cities);
