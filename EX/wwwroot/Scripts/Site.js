@@ -130,6 +130,37 @@ function GetPeople() {
     })
 }
 
+// sto provando ma non riesco a far passare i dati nella richiesta, facendolo da url li passa ma rende i parametri undefined
+// su swagger sarebbe   'https://localhost:7137/Person?firstName=provadasw&lastName=provadasw&age=11&address=adr&cityID=bf79ef86-53eb-48f8-aa22-3c84e0cda400' \
+function PostPerson() {
+    //Imposta URL. --inutile
+ //  var url = $("#FormPerson").attr("action");
+
+    //con questo messo dopo l'url parte la richiesta ma i parametri sono undefined, probabilmente sono io stupido
+var datas = "?firstName=" + $("#FirstName").val() + "&lastName=" + $("#LastName").val() + "&age=" + $("Age").val() + "&address=" + $("#Address").val() + "&cityID=" + $("#CityID").val();
+
+// usando formdata non li passa
+    //var formData = new FormData();
+    //formData.append("firstName", $("#FirstName").val());
+    //formData.append("lastName", $("#LastName").val());
+    //formData.append("age", $("#Age").val());
+    //formData.append("address", $("#Address").val());
+    //formData.append("cityID", $("#CityID").val());
+
+
+    $.ajax({
+        type: 'POST',
+        url: "https://localhost:7137/Person" + datas, // mettendo "+ datas" e togliendo il data qua sotto la richiesta parte
+        data: formData,
+        processData: false,
+        contentType: false
+    }).done(function (response) {
+        if (response.Status === "success") {
+            $("#lblName").html(response.Name);
+        }
+    });
+}
+
 //non utilizzata
 //function GetPerson() {
 //    var s = document.getElementById("personName").value;

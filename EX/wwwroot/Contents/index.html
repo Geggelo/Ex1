@@ -45,6 +45,38 @@
             <tbody id="peopleTable"></tbody>
         </table>
     </div>
+    <div>
+        <form id="FormPerson" method="post" enctype="multipart/form-data" asp-controller="Person" asp-action="AddPerson">
+            <table>
+                <tr>
+                    <td>First Name: </td>
+                    <td><input type="text" id="FirstName" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name: </td>
+                    <td><input type="text" id="LastName" /></td>
+                </tr>
+                <tr>
+                    <td>Age: </td>
+                    <td><input type="text" id="Age" /></td>
+                </tr>
+                <tr>
+                    <td>Address: </td>
+                    <td><input type="text" id="Address" /></td>
+                </tr>
+                <tr>
+                    <td>City ID: </td>
+                    <td><input type="text" id="CityID" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="Submit" onclick="PostPerson()" /></td>
+                </tr>
+            </table>
+            <hr />
+            <span id="lblName"></span>
+        </form>
+    </div>
 </body>
 
 </html>
