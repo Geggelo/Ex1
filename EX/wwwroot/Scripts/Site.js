@@ -68,6 +68,33 @@ function GetCityPeople(id) {
     })
 }
 
+//restituisce tutte le persone
+//bottone con cestino elimina la persona
+function GetPeople() {
+    $.ajax({
+        url: "https://localhost:7137/Person",
+        method: "GET"
+    }).done(function (result) {
+        if (result)
+            $("#peopleTable").html(result.map(item => `<tr>
+            <td>${item.firstName} </td>
+            <td>${item.lastName}</td>
+            <td>${item.age}</td>
+            <td>${item.address}</td>
+
+            <td><button type="button" class="btn btn-danger" onclick="DeletePersonV2('${item.id}')"
+            <i class="bi bi-trash3"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+            </svg></button></td>
+            </tr>`));
+        $("#people").show();
+        $("#cities").hide();
+    }).fail(function () {
+        alert("ERRORE!");
+    })
+}
+
 //funziona
 //elimina una città e ricarica la tabella
 function DeleteCity(id) {
@@ -99,86 +126,55 @@ function DeletePerson(id) {
     })
 }
 
-//Riporta alla lista di città
-function Return() {
-    GetCities();
-}
-//restituisce tutte le persone
-//bottone con cestino elimina la persona
-function GetPeople() {
+//funziona
+//elimina una persona e ricarica la tabella (PER LA LISTA DI SOLO CITTADINI)
+function DeletePersonV2(id) {
     $.ajax({
-        url: "https://localhost:7137/Person",
-        method: "GET"
+        url: "https://localhost:7137/Person/" + id,
+        method: "DELETE"
     }).done(function (result) {
-        if (result)
-            $("#peopleTable").html(result.map(item => `<tr>
-            <td>${item.firstName} </td>
-            <td>${item.lastName}</td>
-            <td>${item.age}</td>
-            <td>${item.address}</td>
-
-            <td><button type="button" class="btn btn-danger" onclick="DeletePerson()"
-            <i class="bi bi-trash3"></i>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-            </svg></button></td>
-            </tr>`));
-            $("#people").show();
-            $("#cities").hide();
+        if (result) {
+            GetPeople();
+        };
     }).fail(function () {
         alert("ERRORE!");
     })
 }
 
-// sto provando ma non riesco a far passare i dati nella richiesta, facendolo da url li passa ma rende i parametri undefined
-// su swagger sarebbe   'https://localhost:7137/Person?firstName=provadasw&lastName=provadasw&age=11&address=adr&cityID=bf79ef86-53eb-48f8-aa22-3c84e0cda400' \
-function PostPerson() {
-    //Imposta URL. --inutile
- //  var url = $("#FormPerson").attr("action");
+//Riporta alla lista di città
+function Return() {
+    GetCities();
+}
 
-    //con questo messo dopo l'url parte la richiesta ma i parametri sono undefined, probabilmente sono io stupido
-var datas = "?firstName=" + $("#FirstName").val() + "&lastName=" + $("#LastName").val() + "&age=" + $("Age").val() + "&address=" + $("#Address").val() + "&cityID=" + $("#CityID").val();
-
-// usando formdata non li passa
-    //var formData = new FormData();
-    //formData.append("firstName", $("#FirstName").val());
-    //formData.append("lastName", $("#LastName").val());
-    //formData.append("age", $("#Age").val());
-    //formData.append("address", $("#Address").val());
-    //formData.append("cityID", $("#CityID").val());
-
+//Fa correttamente la post, dobbiamo metterci la validation ed è a posto
+function DioCaroSeNonFunzioni() {
+    var person = {
+        id: "00000000-0000-0000-0000-000000000000",
+        firstName: $("#firstName").val(),
+        lastName: $("#lastName").val(),
+        age: $("#age").val(),
+        address: $("#address").val(),
+        cityId: "bf79ef86-53eb-48f8-aa22-3c84e0cda400"
+    };
 
     $.ajax({
-        type: 'POST',
-        url: "https://localhost:7137/Person" + datas, // mettendo "+ datas" e togliendo il data qua sotto la richiesta parte
-        data: formData,
-        processData: false,
-        contentType: false
-    }).done(function (response) {
-        if (response.Status === "success") {
-            $("#lblName").html(response.Name);
-        }
+        method: "POST",
+        url: "https://localhost:7137/Person",
+        data: JSON.stringify(person),
+        contentType: "application/json"
+    }).done(function (result) {
+        GetPeople();
+    }).fail(function () {
+        alert("Fallito");
+    }).always(function () {
+        alert("Chiamato");
     });
 }
 
-//non utilizzata
-//function GetPerson() {
-//    var s = document.getElementById("personName").value;
-//    $.ajax({
-//        url: "https://localhost:7137/Person/" + s,
-//        method: "GET"
-//    }).done(function (result) {
-//        $("#CityTable").html(`<tr>
-//        <td>${result.firstName} </td>
-//        <td>${result.lastName}</td>
-//        <td>${result.age}</td>
-//        <td>${result.address}</td>
-//        </tr>`);
-//    }).fail(function () {
-//        alert("ERRORE!");
-//    }).always(function () {
-//        $("#esito").html("Fatto!");
-//    })
-//}
+//per ora è inutile
+function ClearForms() {
+    $("form").removeClass('was-validated');
+    $(".form-control").val("");
+}
 
 

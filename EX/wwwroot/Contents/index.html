@@ -45,7 +45,54 @@
             <tbody id="peopleTable"></tbody>
         </table>
     </div>
-    <div>
+
+    <form id="addPersonForm" class="row needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Mario" required>
+            <div class="valid-feedback">
+                First name ok
+            </div>
+            <div class="invalid-feedback">
+                Invalid first name
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last name:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Rossi" required>
+            <div class="valid-feedback">
+                Last name ok
+            </div>
+            <div class="invalid-feedback">
+                Invalid last name
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" min="0" max="125" class="form-control" id="age" placeholder="Age" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Last name:</label>
+            <input type="text" class="form-control" id="address" placeholder="Random street 65" required>
+            <div class="valid-feedback">
+                Address ok
+            </div>
+            <div class="invalid-feedback">
+                Invalid address
+            </div>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-info" onclick="DioCaroSeNonFunzioni()">Create</button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <!--<div>
         <form id="FormPerson" method="post" enctype="multipart/form-data" asp-controller="Person" asp-action="AddPerson">
             <table>
                 <tr>
@@ -76,7 +123,7 @@
             <hr />
             <span id="lblName"></span>
         </form>
-    </div>
+    </div>-->
 </body>
 
 </html>

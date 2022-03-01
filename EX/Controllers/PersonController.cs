@@ -18,19 +18,19 @@ namespace EX.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPerson(string firstName, string lastName, int age, string address, Guid cityID)
+        public IActionResult AddPerson(Person person)
         {
             _logger.LogInformation("Requested creation of a new person entry");
             try
             {
                 List<City> cities = _utilities.Deserializer();
-                var target = cities.FirstOrDefault(x => x.id == cityID);
+                var target = cities.FirstOrDefault(x => x.id == person.cityId);
                 if (target == null)
-                    return BadRequest($"{cityID} deos not exist");
-                Person newest = new Person(firstName, lastName, age, address, cityID);
+                    return BadRequest($"{person.cityId} deos not exist");
+                Person newest = new Person(person.firstName, person.lastName, person.age, person.address, person.cityId);
                 newest.id = Guid.NewGuid();
                 target.people.Add(newest);
-                _logger.LogInformation($"{firstName} {lastName} successfully created");
+                _logger.LogInformation($"{person.firstName} {person.lastName} successfully created");
                 _utilities.Serializer(cities);
                 return Ok(target);
             }
