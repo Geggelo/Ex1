@@ -32,10 +32,10 @@
                     $.ajax({
                         method: "POST",
                         url: "https://localhost:7137/Person",
-                        data: JSON.stringify(course),
+                        data: JSON.stringify(person),
                         contentType: "application/json"
                     }).done(function (result) {
-                        alert("asdsa");
+                        Return();
                     }).fail(function () {
                         alert("Fallito");
                     }).always(function () {
