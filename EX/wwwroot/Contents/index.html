@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script>
         $(document).ready(function () {
-            $("#addPersonForm")[0].addEventListener('submit', function (event) {
+            $("#addPersonFromCity")[0].addEventListener('submit', function (event) {
                 //Gestione validazione
                 event.preventDefault();
                 event.stopPropagation();
@@ -26,7 +26,7 @@
                         lastName: $("#lastName").val(),
                         age: $("#age").val(),
                         address: $("#address").val(),
-                        cityId: "bf79ef86-53eb-48f8-aa22-3c84e0cda400"
+                        cityId: $("#cityId").val()
                     };
                     //Chiamata Ajax per la post
                     $.ajax({
@@ -35,11 +35,11 @@
                         data: JSON.stringify(person),
                         contentType: "application/json"
                     }).done(function (result) {
+                        ClearForms()
+                        PeoplePopUpHide();
                         Return();
                     }).fail(function () {
                         alert("Fallito");
-                    }).always(function () {
-                        alert("Chiamato");
                     });
                 }
                 return false;
@@ -83,48 +83,53 @@
             </thead>
             <tbody id="peopleTable"></tbody>
         </table>
-        <button type="button" class="btn btn-success col-6" onclick="PeoplePopUp()">Add person</button>
     </div>
 
-    <form id="addPersonForm" class="row needs-validation" novalidate>
-        <div class="mb-3">
-            <label for="firstName" class="form-label">First name:</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Mario" required>
-            <div class="valid-feedback">
-                First name ok
-            </div>
-            <div class="invalid-feedback">
-                Invalid first name
-            </div>
+    <div id="peopleCreator" style="display: none">
+        <div id="popup">
+            <form id="addPersonFromCity" class="row needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First name:</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Mario" required>
+                    <div class="valid-feedback">
+                        First name ok
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid first name
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Rossi" required>
+                    <div class="valid-feedback">
+                        Last name ok
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid last name
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" min="0" max="125" class="form-control" id="age" placeholder="Age" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Last name:</label>
+                    <input type="text" class="form-control" id="address" placeholder="Random street 65" required>
+                    <div class="valid-feedback">
+                        Address ok
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid address
+                    </div>
+                </div>
+                <div style="display: none">
+                    <input type="text" id="cityId">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info" type="submit">Create</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="lastName" class="form-label">Last name:</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Rossi" required>
-            <div class="valid-feedback">
-                Last name ok
-            </div>
-            <div class="invalid-feedback">
-                Invalid last name
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="age" class="form-label">Age:</label>
-            <input type="number" min="0" max="125" class="form-control" id="age" placeholder="Age" required>
-        </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Last name:</label>
-            <input type="text" class="form-control" id="address" placeholder="Random street 65" required>
-            <div class="valid-feedback">
-                Address ok
-            </div>
-            <div class="invalid-feedback">
-                Invalid address
-            </div>
-        </div>
-        <div class="mb-3">
-            <button class="btn btn-info" onclick="DioCaroSeNonFunzioni()">Create</button>
-            <button class="btn btn-info" type="submit">dsadsa</button>
-        </div>
-    </form>
+    </div>
 </body>
 </html>
