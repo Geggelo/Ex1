@@ -39,6 +39,7 @@ function GetCities() {
     })
 }
 
+
 //viene chiamato con il bottone con tre puntini
 //bottone con freccia fa tornare indietro
 //bottone con cestino elimina la persona
@@ -100,6 +101,7 @@ function GetPeople() {
     }).fail(function () {
         alert("ERRORE!");
     })
+    document.getElementById('peopleCreator').style.display = "none";
 }
 
 //funziona
@@ -220,3 +222,4 @@ function ClearForms() {
     $("form").removeClass('was-validated');
     $(".form-control").val("");
 }
+
